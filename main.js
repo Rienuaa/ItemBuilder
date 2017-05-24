@@ -11,51 +11,36 @@ function submitAll(){
 	//sets level
 	a = document.getElementById("levelChoices");
 	level = a.options[a.selectedIndex].text;
-	console.log(level);
-	document.getElementById("levelDisplay").innerHTML = level;
 	
 	//sets power level
 	b = document.getElementById("powerLevelChoices");
 	powerLevel = b.options[b.selectedIndex].text;
-	document.getElementById("powerLevelDisplay").innerHTML = powerLevel;
 	
 	//sets prefix
 	c = document.getElementById("prefixChoices");
 	prefix = c.options[c.selectedIndex].text;
-	document.getElementById("prefixDisplay").innerHTML = prefix;
 	
 	//sets suffixe
 	d = document.getElementById("suffixChoices");
 	suffix = d.options[d.selectedIndex].text;
-	document.getElementById("suffixDisplay").innerHTML = suffix;
 	
 	
 	//sets extra
 	e = document.getElementById("extraChoices");
 	extra = e.options[e.selectedIndex].text;
-	document.getElementById("extraDisplay").innerHTML = extra;
 	
 	
 	//sets extra2
 	f = document.getElementById("extra2Choices");
 	extra2 = f.options[f.selectedIndex].text;
-	document.getElementById("extra2Display").innerHTML = extra2;
 	
-	console.log(level);
 	computePower();
-	
-	//sets power
-	document.getElementById("powerDisplay").innerHTML = power;
-	
+	updateDisplay();	
 };
 
 function computePower(){
-	console.log("part 1 working");
-	console.log(level);
 	power = parseInt(power);
 	if (powerLevel == "Low") {
-		console.log("power level is low");
-		console.log(level);
 		switch(parseInt(level)) {
 			default:
 				power = 1000000;
@@ -165,7 +150,6 @@ function computePower(){
 		}		
 	}
 	if (powerLevel == "Medium") {
-		console.log("power level is med");
 		switch(parseInt(level)) {
 			default:
 				power = 1000000;
@@ -274,7 +258,6 @@ function computePower(){
 		}
 	}
 	if (powerLevel == "High") {
-		console.log("power level is high");
 		switch(parseInt(level)) {
 			case 1:
 				power = 7;
@@ -382,7 +365,6 @@ function computePower(){
 				break;
 		}
 	}
-	console.log(power);
 };
 
 
@@ -401,18 +383,19 @@ function START(){
 	document.getElementById("suffixForm").reset();
 	document.getElementById("extraForm").reset();
 	document.getElementById("extra2Form").reset();
-	updateDisplay();
 };
 
 function updateDisplay(){
 	document.getElementById("levelDisplay").innerHTML = level;
-	document.getElementById("powerLevelDisplay").innerHTML = powerLevel;
-	document.getElementById("prefixDisplay").innerHTML = prefix;
-	document.getElementById("suffixDisplay").innerHTML = suffix;
-	document.getElementById("extraDisplay").innerHTML = extra;
-	document.getElementById("extra2Display").innerHTML = extra2;
-	document.getElementById("powerDisplay").innerHTML = power;
-	
+	document.getElementById("powerLevelDisplay").innerHTML = power;
+	document.getElementById("prefixDisplay").innerHTML = "eff_tr_mutation_" + prefix + "_prefix.wc ";
+	document.getElementById("suffixDisplay").innerHTML = "eff_tr_mutation_" + suffix + "_suffix.wc ";
+	document.getElementById("extraDisplay").innerHTML = "eff_tr_mutation_" + extra + "_extra.wc ";
+	document.getElementById("extra2Display").innerHTML = "eff_tr_mutation_" + extra2 + "_extra_2.wc ";
+	document.getElementById("prefixDisplayPower").innerHTML = "eff_tr_treasure_prefix_power_" + power + ".wc ";
+	document.getElementById("suffixDisplayPower").innerHTML = "eff_tr_treasure_suffix_power_" + power + ".wc ";
+	document.getElementById("extraDisplayPower").innerHTML = "eff_tr_treasure_extraone_power_" + power + ".wc ";
+	document.getElementById("extra2DisplayPower").innerHTML = "eff_tr_treasure_extratwo_power_" + power + ".wc ";
 };
 
 START();
