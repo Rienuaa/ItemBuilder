@@ -5,7 +5,10 @@ var prefix = "";
 var suffix = "";
 var extra = "";
 var extra2 = "";
-
+var prefixActual = 0;
+var suffixActual = 0;
+var extraActual = 0;
+var extra2Actual = 0;
 
 function submitAll(){
 	//sets level
@@ -34,12 +37,18 @@ function submitAll(){
 	f = document.getElementById("extra2Choices");
 	extra2 = f.options[f.selectedIndex].text;
 	
+	
 	computePower();
 	updateDisplay();	
+	displayItem();
 };
 
 function computePower(){
 	power = parseInt(power);
+	//if a power level is set to relative high low or med, it approximates on curve 1:1
+	//if not, it takes that power level designated and then propegates
+	//without access to the original power curve a switch statement like this is necessary
+	//if level cap increases this will need to change
 	if (powerLevel == "Low") {
 		switch(parseInt(level)) {
 			default:
@@ -148,8 +157,7 @@ function computePower(){
 				power = 93;
 				break;
 		}		
-	}
-	if (powerLevel == "Medium") {
+	} else if (powerLevel == "Medium") {
 		switch(parseInt(level)) {
 			default:
 				power = 1000000;
@@ -256,8 +264,7 @@ function computePower(){
 			case 34:
 				power = 103;
 		}
-	}
-	if (powerLevel == "High") {
+	} else if (powerLevel == "High") {
 		switch(parseInt(level)) {
 			case 1:
 				power = 7;
@@ -364,10 +371,17 @@ function computePower(){
 				power = 1000000;
 				break;
 		}
+	} else {
+		power = powerLevel;
 	}
 };
 
-
+function displayItem(){
+	
+	
+	
+	
+}
 
 function START(){
 	level = 1;
